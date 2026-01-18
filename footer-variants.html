@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты футера слайда</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-blue: #0A84FF;
+            --text-primary: #1d1d1f;
+            --text-secondary: rgba(0, 0, 0, 0.6);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #ffffff;
+            scroll-snap-type: y proximity;
+            overflow-y: scroll;
+        }
+
+        .variant {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .variant-number {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Вариант 1: Минималистичный без фона */
+        .footer-v1 {
+            text-align: center;
+        }
+
+        .footer-v1 p {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .footer-v1 .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Вариант 2: С вертикальной полоской слева (цитата) */
+        .footer-v2 {
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 32px;
+        }
+
+        .footer-v2 p {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+        }
+
+        .footer-v2 .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Вариант 3: Только тонкая рамка */
+        .footer-v3 {
+            text-align: center;
+            border: 1px solid var(--border-color);
+            padding: 32px 48px;
+            border-radius: 16px;
+        }
+
+        .footer-v3 p {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .footer-v3 .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Вариант 4: С легкой синей рамкой */
+        .footer-v4 {
+            text-align: center;
+            border: 2px solid rgba(10, 132, 255, 0.2);
+            padding: 32px 48px;
+            border-radius: 16px;
+            background: rgba(10, 132, 255, 0.02);
+        }
+
+        .footer-v4 p {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .footer-v4 .highlight {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* Вариант 5: С иконкой и верхней полоской */
+        .footer-v5 {
+            text-align: center;
+            border-top: 3px solid var(--accent-blue);
+            padding-top: 32px;
+        }
+
+        .footer-v5 .icon {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+        }
+
+        .footer-v5 p {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .footer-v5 .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Вариант 6: Двухстрочный с подзаголовком */
+        .footer-v6 {
+            text-align: center;
+        }
+
+        .footer-v6 .label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(0, 0, 0, 0.4);
+            margin-bottom: 12px;
+        }
+
+        .footer-v6 p {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .footer-v6 .highlight {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* Вариант 7: С акцентным фоном под highlight */
+        .footer-v7 {
+            text-align: center;
+        }
+
+        .footer-v7 p {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.5;
+        }
+
+        .footer-v7 .highlight {
+            color: var(--accent-blue);
+            font-weight: 700;
+            background: rgba(10, 132, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Вариант 1: Минималистичный -->
+    <section class="variant">
+        <div class="variant-number">Вариант 1 — Минималистичный</div>
+        <div class="footer-container footer-v1">
+            <p>Контекст убивает необходимость<br>в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 2: Цитата с полоской -->
+    <section class="variant">
+        <div class="variant-number">Вариант 2 — Цитата с полоской</div>
+        <div class="footer-container footer-v2">
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 3: Рамка -->
+    <section class="variant">
+        <div class="variant-number">Вариант 3 — Только рамка</div>
+        <div class="footer-container footer-v3">
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 4: Синяя рамка -->
+    <section class="variant">
+        <div class="variant-number">Вариант 4 — Акцентная рамка</div>
+        <div class="footer-container footer-v4">
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 5: С иконкой -->
+    <section class="variant">
+        <div class="variant-number">Вариант 5 — С верхней полоской</div>
+        <div class="footer-container footer-v5">
+            <div class="icon">✓</div>
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 6: С подзаголовком -->
+    <section class="variant">
+        <div class="variant-number">Вариант 6 — С подзаголовком</div>
+        <div class="footer-container footer-v6">
+            <div class="label">Ключевой вывод</div>
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+
+    <!-- Вариант 7: С фоном под highlight -->
+    <section class="variant">
+        <div class="variant-number">Вариант 7 — С акцентным фоном</div>
+        <div class="footer-container footer-v7">
+            <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+        </div>
+    </section>
+</body>
+</html>

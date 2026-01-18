@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>По ту сторону ChatGPT — Презентация</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-blue: #0A84FF;
+            --text-primary: #1d1d1f;
+            --text-secondary: rgba(0, 0, 0, 0.6);
+            --text-tertiary: rgba(0, 0, 0, 0.4);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --bg-subtle: rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y proximity;
+            overflow-y: scroll;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1280px;
+            padding: 64px 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .slide-header h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .slide-header h1 span {
+            color: var(--accent-blue);
+        }
+
+        /* Слайд 1 - Эволюция процесса */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            flex: 1;
+            align-items: stretch;
+        }
+
+        .column {
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .column-header h2 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 6px;
+        }
+
+        .column-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .was .column-header h3 {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .now .column-header h3 {
+            color: var(--text-primary);
+        }
+
+        .items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            margin-bottom: 32px;
+        }
+
+        .item {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+        }
+
+        .item-number {
+            font-size: 0.7rem;
+            font-weight: 500;
+            width: 18px;
+            flex-shrink: 0;
+        }
+
+        .was .item-number {
+            color: rgba(0, 0, 0, 0.25);
+        }
+
+        .now .item-number {
+            color: var(--accent-blue);
+        }
+
+        .item-content h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+            letter-spacing: -0.01em;
+        }
+
+        .was .item-content h4 {
+            color: var(--text-secondary);
+        }
+
+        .now .item-content h4 {
+            color: var(--text-primary);
+        }
+
+        .item-content p {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            line-height: 1.4;
+        }
+
+        .column-footer {
+            margin-top: auto;
+            padding-top: 16px;
+            position: relative;
+        }
+
+        .column-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .column-footer p {
+            font-size: 0.8rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .was .column-footer p {
+            color: rgba(0, 0, 0, 0.35);
+        }
+
+        .now .column-footer p {
+            color: var(--text-secondary);
+        }
+
+        .arrow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent-blue);
+            animation: arrowGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowGlow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 56px;
+            padding-bottom: 24px;
+        }
+
+        .slide-footer p {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 32px;
+        }
+
+        .slide-footer .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Слайд 2 - Таблица сравнения */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+
+        .comparison-table thead th {
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+        }
+
+        .comparison-table thead th:first-child {
+            width: 20%;
+        }
+
+        .comparison-table thead th:nth-child(2) {
+            width: 40%;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table thead th:nth-child(3) {
+            width: 40%;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table tbody td {
+            padding: 24px;
+            vertical-align: top;
+        }
+
+        .comparison-table tbody td:first-child {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+        }
+
+        .comparison-table tbody td:nth-child(2) {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .comparison-table tbody td:nth-child(2) .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .comparison-table tbody td:nth-child(3) {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .comparison-table tbody td:nth-child(3) .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .table-footer {
+            margin-top: 48px;
+        }
+
+        .table-footer p {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 32px;
+        }
+
+        .table-footer .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Слайд 3 - От монолога к диалогу */
+        .slide-header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .blocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .block {
+            padding: 32px;
+            border-radius: 12px;
+            background: var(--bg-subtle);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .block-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .block.problem .block-title {
+            color: #FF453A;
+        }
+
+        .block.solution .block-title {
+            color: var(--accent-blue);
+        }
+
+        .block.result .block-title {
+            color: #32D74B;
+        }
+
+        .block-content {
+            flex: 1;
+        }
+
+        .block-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .block-content li {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .block-content li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-tertiary);
+        }
+
+        .block.problem .block-content li::before {
+            content: '✗';
+            color: #FF453A;
+        }
+
+        .block.solution .block-content li::before {
+            content: '✓';
+            color: var(--accent-blue);
+        }
+
+        .block.result .block-content li::before {
+            content: '→';
+            color: #32D74B;
+        }
+
+        .time-comparison {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .time-comparison p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .time-comparison .old-time {
+            color: var(--text-tertiary);
+            position: relative;
+            text-decoration: none;
+            animation: fadeInOut 5s ease-in-out infinite;
+        }
+
+        .time-comparison .old-time::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--text-tertiary);
+            animation: strikethroughLoop 5s ease-out infinite;
+        }
+
+        @keyframes strikethroughLoop {
+            0%, 16% {
+                width: 0;
+            }
+            28% {
+                width: 100%;
+            }
+            90%, 100% {
+                width: 100%;
+            }
+        }
+
+        .time-comparison .arrow-time {
+            color: var(--text-primary);
+            opacity: 0;
+            animation: arrowFadeLoop 5s ease-out infinite;
+        }
+
+        .time-comparison .new-time {
+            color: #32D74B;
+            opacity: 0;
+            animation: fadeInScaleLoop 5s ease-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes arrowFadeLoop {
+            0%, 28% {
+                opacity: 0;
+            }
+            34% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInScaleLoop {
+            0%, 34% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            44% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Слайд 4 - Практика: Аналитика */
+        .live-cases {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+            margin: 60px 0;
+            flex: 1;
+            align-items: center;
+        }
+
+        .case-card {
+            padding: 48px;
+            border-radius: 20px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .case-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: var(--accent-blue);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.05em;
+        }
+
+        .case-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .case-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #FF453A 0%, #FF6B6B 100%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            border-radius: 12px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
+        }
+
+        /* Слайд 5 - Конвейер знаний */
+        .knowledge-pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .pipeline-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .pipeline-stage .stage-number {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .pipeline-stage .stage-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .pipeline-stage .stage-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .pipeline-stage .stage-action {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .pipeline-stage .stage-result {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* Стрелки между этапами */
+        .pipeline-stage::after {
+            content: '→';
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--accent-blue);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .pipeline-stage:last-child::after {
+            content: '';
+        }
+
+        /* Акценты для разных этапов */
+        .pipeline-stage.capture {
+            border-top: 3px solid #FF9500;
+        }
+
+        .pipeline-stage.structure {
+            border-top: 3px solid #BF5AF2;
+        }
+
+        .pipeline-stage.sync {
+            border-top: 3px solid #32D74B;
+        }
+
+        .pipeline-stage.intelligence {
+            border-top: 3px solid var(--accent-blue);
+        }
+
+        /* Слайд 7 - Горизонтальный чек */
+        .pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin: 20px 0;
+            align-items: stretch;
+        }
+
+        .receipt-container {
+            background: #ffffff;
+            padding: 32px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            font-family: 'Courier New', monospace;
+        }
+
+        .receipt-header {
+            text-align: center;
+            padding-bottom: 16px;
+            border-bottom: 2px dashed var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .receipt-header .store-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .receipt-header .store-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .receipt-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.95rem;
+        }
+
+        .receipt-item .item-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .receipt-item .item-price {
+            color: var(--text-primary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .receipt-item.free .item-price {
+            color: #32D74B;
+        }
+
+        /* Верхняя часть чека */
+        .receipt-top {
+            position: relative;
+            padding-bottom: 16px;
+            margin-bottom: 0;
+        }
+
+        .receipt-top::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: 
+                linear-gradient(45deg, #ffffff 50%, transparent 50%),
+                linear-gradient(-45deg, #ffffff 50%, transparent 50%);
+            background-size: 10px 10px;
+            background-repeat: repeat-x;
+            z-index: 2;
+        }
+
+        /* Нижняя часть чека */
+        .receipt-bottom {
+            position: relative;
+            padding-top: 16px;
+            margin-top: 0;
+        }
+
+        .receipt-bottom::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: 
+                linear-gradient(135deg, transparent 50%, #ffffff 50%),
+                linear-gradient(-135deg, transparent 50%, #ffffff 50%);
+            background-size: 10px 10px;
+            background-repeat: repeat-x;
+            z-index: 1;
+        }
+
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .receipt-total .total-label {
+            color: var(--text-primary);
+        }
+
+        .receipt-total .total-price {
+            color: var(--accent-blue);
+        }
+
+        /* Правая колонка - сравнение */
+        .comparison-container {
+            background: var(--bg-subtle);
+            padding: 32px;
+            border-radius: 12px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-container .comparison-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .comparison-container .comparison-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .comparison-container .comparison-header p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .comparison-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .comparison-item .comp-emoji {
+            font-size: 2rem;
+        }
+
+        .comparison-item .comp-text {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .comparison-item .comp-detail {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Слайд 1: Эволюция процесса -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>Эволюция процесса.<br><span>От рутины к автономии.</span></h1>
+            </header>
+
+            <div class="columns">
+                <div class="column was">
+                    <div class="column-header">
+                        <h2>Было</h2>
+                        <h3>Цепочка посредников</h3>
+                    </div>
+                    <ul class="items">
+                        <li class="item">
+                            <span class="item-number">01</span>
+                            <div class="item-content">
+                                <h4>Задача аналитику</h4>
+                                <p>Ожидание в бэклоге 2–5 дней</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">02</span>
+                            <div class="item-content">
+                                <h4>Выгрузка данных</h4>
+                                <p>CSV-файлы, ручная обработка</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">03</span>
+                            <div class="item-content">
+                                <h4>Загрузка в ChatGPT</h4>
+                                <p>Копипаст данных без контекста</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">04</span>
+                            <div class="item-content">
+                                <h4>Подбор промпта</h4>
+                                <p>Поиск «магических слов»</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">05</span>
+                            <div class="item-content">
+                                <h4>Итерации и правки</h4>
+                                <p>2–3 цикла уточнений</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="column-footer">
+                        <p>Фокус на процессе</p>
+                    </div>
+                </div>
+
+                <div class="arrow-container">
+                    <div class="arrow">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="column now">
+                    <div class="column-header">
+                        <h2>Стало</h2>
+                        <h3>Единая среда</h3>
+                    </div>
+                    <ul class="items">
+                        <li class="item">
+                            <span class="item-number">01</span>
+                            <div class="item-content">
+                                <h4>Запрос в Cursor</h4>
+                                <p>ИИ уже видит контекст проекта</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">02</span>
+                            <div class="item-content">
+                                <h4>Данные через MCP</h4>
+                                <p>Прямое подключение к Amplitude и БД</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="item-number">03</span>
+                            <div class="item-content">
+                                <h4>Готовый результат</h4>
+                                <p>Отчет в .md, графики, выводы</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="column-footer">
+                        <p>Фокус на результате</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <p><span>Prompt Engineering</span> → <span class="highlight">Intent Management</span></p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Слайд 2: Что изменилось -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>Что <span>изменилось</span></h1>
+            </header>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Характеристика</th>
+                        <th>Эпоха «Промптов» (ChatGPT)</th>
+                        <th>Эпоха «Контекста» (Cursor)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Роль пользователя</td>
+                        <td><span class="highlight">«Заклинатель»</span><br>(нужно знать формулы)</td>
+                        <td><span class="highlight">«Тимлид»</span><br>(нужно знать цель)</td>
+                    </tr>
+                    <tr>
+                        <td>Контекст</td>
+                        <td><span class="highlight">Вы копируете его руками</span><br>(файлы, код, логи)</td>
+                        <td>Инструмент <span class="highlight">«видит»</span> проект<br>целиком через индексацию</td>
+                    </tr>
+                    <tr>
+                        <td>Основная сложность</td>
+                        <td><span class="highlight">Как правильно попросить</span></td>
+                        <td><span class="highlight">Что именно</span> нужно сделать</td>
+                    </tr>
+                    <tr>
+                        <td>Формат ввода</td>
+                        <td><span class="highlight">Длинная простыня текста</span><br>(Mega-prompt)</td>
+                        <td>Короткое намерение<br>(<span class="highlight">Natural Language Command</span>)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-footer">
+                <p>Контекст убивает необходимость в <span class="highlight">«магических заклинаниях»</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 3: От монолога к диалогу -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>От монолога к <span>диалогу</span></h1>
+                <p class="subtitle">Почему кратко — это быстрее</p>
+            </header>
+
+            <div class="blocks">
+                <!-- Проблема -->
+                <div class="block problem">
+                    <div class="block-title">Проблема</div>
+                    <div class="block-content">
+                        <ul>
+                            <li>Копи-паст промтов с Reddit, ТГ и Git не всегда хорошо работает для ваших задач</li>
+                            <li>Чужой контекст → галлюцинации ИИ</li>
+                            <li>Prompt-engineering нужно учиться</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Решение -->
+                <div class="block solution">
+                    <div class="block-title">Решение</div>
+                    <div class="block-content">
+                        <ul>
+                            <li>Общайтесь с ИИ как с джуном: последовательно объясняйте задачу</li>
+                            <li>Формат: задача → проверка как понял → корректировка задачи</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Результат -->
+                <div class="block result">
+                    <div class="block-title">Результат</div>
+                    <div class="block-content">
+                        <ul>
+                            <li>Переход к управлению намерением (Intent Management)</li>
+                            <li>От создания промтов к простым командам.</li>
+                        </ul>
+                        <div class="time-comparison">
+                            <p><span class="old-time">15 мин</span><span class="arrow-time"> → </span><span class="new-time">1 мин</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <p>Лайфхак: <span class="highlight">"Voice to text"</span> не просто ускоряет печать, он ускоряет донесение информации до ИИ</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Слайд 4: Практика — Аналитика -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>Демо: как работать с <span>продуктовой аналитикой</span></h1>
+            </header>
+
+            <div class="live-cases">
+                <div class="case-card">
+                    <div class="case-icon">SQL</div>
+                    <h2>SQL to Text</h2>
+                    <p>Общение с БД на естественном языке</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">YM</div>
+                    <h2>Yandex Metrica MCP</h2>
+                    <p>Данные из API напрямую в контекст</p>
+                </div>
+            </div>
+
+            <div class="demo-badge"><span class="live-dot"></span>LIVE CASE</div>
+        </div>
+    </section>
+
+    <!-- Слайд 5: Конвейер знаний -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>Конвейер <span>знаний продакта</span></h1>
+                <p class="subtitle">От хаоса встреч к чистому контексту</p>
+            </header>
+
+            <div class="knowledge-pipeline">
+                <!-- Этап 1: Фиксация -->
+                <div class="pipeline-stage capture">
+                    <div class="stage-number">Этап 1</div>
+                    <div class="stage-icon">🎙️</div>
+                    <div class="stage-name">Shadow.do</div>
+                    <div class="stage-action">Фиксация</div>
+                    <div class="stage-result">Голос → Транскрипт</div>
+                </div>
+
+                <!-- Этап 2: Структура -->
+                <div class="pipeline-stage structure">
+                    <div class="stage-number">Этап 2</div>
+                    <div class="stage-icon">💎</div>
+                    <div class="stage-name">Obsidian</div>
+                    <div class="stage-action">Структура</div>
+                    <div class="stage-result">Хаос → База знаний (.md)</div>
+                </div>
+
+                <!-- Этап 3: Интеллект -->
+                <div class="pipeline-stage intelligence">
+                    <div class="stage-number">Этап 3</div>
+                    <div class="stage-icon">🤖</div>
+                    <div class="stage-name">Cursor</div>
+                    <div class="stage-action">Интеллект</div>
+                    <div class="stage-result">Контекст → Решения</div>
+                </div>
+
+                <!-- Этап 4: Синхронизация -->
+                <div class="pipeline-stage sync">
+                    <div class="stage-number">Этап 4</div>
+                    <div class="stage-icon">🐙</div>
+                    <div class="stage-name">Git</div>
+                    <div class="stage-action">Синхронизация</div>
+                    <div class="stage-result">Версии + Командный доступ</div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <p>Markdown (.md) — <span class="highlight">единый формат на всех этапах</span></p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Слайд 7: Стоимость инструментов -->
+    <section class="slide">
+        <div class="slide-container">
+            <header class="slide-header">
+                <h1>Ежедневная эффективность по цене <span>чашки кофе</span></h1>
+                <p class="subtitle">Полный стек инструментов и цена вопроса</p>
+            </header>
+
+            <div class="pricing-layout">
+                <!-- Левая часть - Чек -->
+                <div class="receipt-container">
+                    <!-- Верхняя часть чека -->
+                    <div class="receipt-top">
+                        <div class="receipt-header">
+                            <div class="store-name">AI PRODUCTIVITY STACK</div>
+                            <div class="store-subtitle">Подписки на месяц</div>
+                        </div>
+
+                        <div class="receipt-items">
+                            <div class="receipt-item">
+                                <span class="item-name">Voice ink (год)</span>
+                                <span class="item-price">3 120 ₽</span>
+                            </div>
+
+                            <div class="receipt-item">
+                                <span class="item-name">GPT-4 / Claude</span>
+                                <span class="item-price">1 600 ₽</span>
+                            </div>
+
+                            <div class="receipt-item">
+                                <span class="item-name">Cursor IDE</span>
+                                <span class="item-price">1 600 ₽</span>
+                            </div>
+
+                            <div class="receipt-item">
+                                <span class="item-name">Phygital.Plus</span>
+                                <span class="item-price">1 500 ₽</span>
+                            </div>
+
+                            <div class="receipt-item">
+                                <span class="item-name">Perplexity (год)</span>
+                                <span class="item-price">750 ₽</span>
+                            </div>
+
+                            <div class="receipt-item free">
+                                <span class="item-name">Shadow.do</span>
+                                <span class="item-price">FREE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Нижняя часть чека -->
+                    <div class="receipt-bottom">
+                        <div class="receipt-total">
+                            <span class="total-label">ИТОГО:</span>
+                            <span class="total-price">~5 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая часть - Сравнение -->
+                <div class="comparison-container">
+                    <div class="comparison-header">
+                        <h3>Это как...</h3>
+                    </div>
+
+                    <div class="comparison-items">
+                        <div class="comparison-item">
+                            <span class="comp-emoji">☕</span>
+                            <div>
+                                <div class="comp-text">10 чашек кофе</div>
+                                <div class="comp-detail">Полмесяца утренней бодрости</div>
+                            </div>
+                        </div>
+
+                        <div class="comparison-item">
+                            <span class="comp-emoji">🎮</span>
+                            <div>
+                                <div class="comp-text">1 игра на PlayStation</div>
+                                <div class="comp-detail">Один вечер развлечений</div>
+                            </div>
+                        </div>
+
+                        <div class="comparison-item">
+                            <span class="comp-emoji">🍔</span>
+                            <div>
+                                <div class="comp-text">3 похода в Вкусно и точка</div>
+                                <div class="comp-detail">Три обеда с комбо-меню</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <p>Цена одного дня продуктивности — <span class="highlight">меньше чашки кофе</span></p>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+        // Snap scrolling для слайдов (как в PowerPoint/Keynote)
+        let isScrolling = false;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function scrollToSlide(index) {
+            if (index < 0 || index >= totalSlides || isScrolling) return;
+            
+            isScrolling = true;
+            currentSlide = index;
+            
+            slides[currentSlide].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Разблокировать через 1 секунду
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000);
+        }
+
+        // Обработка колеса мыши и свайпов
+        let touchStartY = 0;
+        
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            
+            if (isScrolling) return;
+            
+            if (e.deltaY > 0) {
+                // Скролл вниз - следующий слайд
+                scrollToSlide(currentSlide + 1);
+            } else {
+                // Скролл вверх - предыдущий слайд
+                scrollToSlide(currentSlide - 1);
+            }
+        }, { passive: false });
+
+        // Поддержка тач-свайпов
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            if (isScrolling) return;
+            
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaY = touchStartY - touchEndY;
+            
+            if (Math.abs(deltaY) > 50) { // Минимальное расстояние свайпа
+                if (deltaY > 0) {
+                    scrollToSlide(currentSlide + 1);
+                } else {
+                    scrollToSlide(currentSlide - 1);
+                }
+            }
+        }, { passive: true });
+
+        // Поддержка клавиатуры (стрелки, Page Up/Down)
+        document.addEventListener('keydown', (e) => {
+            if (isScrolling) return;
+            
+            switch(e.key) {
+                case 'ArrowDown':
+                case 'PageDown':
+                case ' ': // Пробел
+                    e.preventDefault();
+                    scrollToSlide(currentSlide + 1);
+                    break;
+                case 'ArrowUp':
+                case 'PageUp':
+                    e.preventDefault();
+                    scrollToSlide(currentSlide - 1);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    scrollToSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    scrollToSlide(totalSlides - 1);
+                    break;
+            }
+        });
+
+        // Определить текущий слайд при прямой прокрутке
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isScrolling) {
+                    currentSlide = Array.from(slides).indexOf(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>

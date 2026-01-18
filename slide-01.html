@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слайд 1 — Эволюция процесса</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 16 / 9;
+            background: #ffffff;
+            padding: 64px 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .slide-header h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .slide-header h1 span {
+            color: #0A84FF;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            flex: 1;
+            align-items: stretch;
+        }
+
+        .column {
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .column-header h2 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(0, 0, 0, 0.4);
+            margin-bottom: 6px;
+        }
+
+        .column-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .was .column-header h3 {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .now .column-header h3 {
+            color: #1d1d1f;
+        }
+
+        .items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .item {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+        }
+
+        .item-number {
+            font-size: 0.7rem;
+            font-weight: 500;
+            width: 18px;
+            flex-shrink: 0;
+        }
+
+        .was .item-number {
+            color: rgba(0, 0, 0, 0.25);
+        }
+
+        .now .item-number {
+            color: #0A84FF;
+        }
+
+        .item-content h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+            letter-spacing: -0.01em;
+        }
+
+        .was .item-content h4 {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .now .item-content h4 {
+            color: #1d1d1f;
+        }
+
+        .item-content p {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.4);
+            line-height: 1.4;
+        }
+
+        .column-footer {
+            margin-top: auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .column-footer p {
+            font-size: 0.8rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .was .column-footer p {
+            color: rgba(0, 0, 0, 0.35);
+        }
+
+        .now .column-footer p {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .arrow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow svg {
+            width: 28px;
+            height: 28px;
+            fill: #0A84FF;
+        }
+
+        .slide-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 56px;
+            padding-bottom: 24px;
+        }
+
+        .slide-footer p {
+            font-size: 1.5rem;
+            color: rgba(0, 0, 0, 0.6);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            padding: 20px 32px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .slide-footer span {
+            color: rgba(0, 0, 0, 0.8);
+            font-weight: 500;
+        }
+
+        .slide-footer .highlight {
+            color: #0A84FF;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <header class="slide-header">
+            <h1>Эволюция процесса.<br><span>От рутины к автономии.</span></h1>
+        </header>
+
+        <div class="columns">
+            <div class="column was">
+                <div class="column-header">
+                    <h2>Было</h2>
+                    <h3>Цепочка посредников</h3>
+                </div>
+                <ul class="items">
+                    <li class="item">
+                        <span class="item-number">01</span>
+                        <div class="item-content">
+                            <h4>Задача аналитику</h4>
+                            <p>Ожидание в бэклоге 2–5 дней</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">02</span>
+                        <div class="item-content">
+                            <h4>Выгрузка данных</h4>
+                            <p>CSV-файлы, ручная обработка</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">03</span>
+                        <div class="item-content">
+                            <h4>Загрузка в ChatGPT</h4>
+                            <p>Копипаст данных без контекста</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">04</span>
+                        <div class="item-content">
+                            <h4>Подбор промпта</h4>
+                            <p>Поиск «магических слов»</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">05</span>
+                        <div class="item-content">
+                            <h4>Итерации и правки</h4>
+                            <p>2–3 цикла уточнений</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="column-footer">
+                    <p>Фокус на процессе</p>
+                </div>
+            </div>
+
+            <div class="arrow-container">
+                <div class="arrow">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="column now">
+                <div class="column-header">
+                    <h2>Стало</h2>
+                    <h3>Единая среда</h3>
+                </div>
+                <ul class="items">
+                    <li class="item">
+                        <span class="item-number">01</span>
+                        <div class="item-content">
+                            <h4>Запрос в Cursor</h4>
+                            <p>ИИ уже видит контекст проекта</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">02</span>
+                        <div class="item-content">
+                            <h4>Данные через MCP</h4>
+                            <p>Прямое подключение к Amplitude и БД</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <span class="item-number">03</span>
+                        <div class="item-content">
+                            <h4>Готовый результат</h4>
+                            <p>Отчет в .md, графики, выводы</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="column-footer">
+                    <p>Фокус на результате</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="slide-footer">
+            <p><span>Prompt Engineering</span> → <span class="highlight">Intent Management</span></p>
+        </footer>
+    </div>
+</body>
+</html>
