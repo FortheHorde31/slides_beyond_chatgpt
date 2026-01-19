@@ -67,6 +67,66 @@
             color: var(--accent-blue);
         }
 
+        /* Титульный слайд */
+        .title-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .title-slide .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            max-width: 900px;
+        }
+
+        .title-slide .main-title span {
+            color: var(--accent-blue);
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 80px;
+            max-width: 700px;
+        }
+
+        .author-card {
+            text-align: center;
+            border-top: 3px solid var(--accent-blue);
+            padding-top: 32px;
+        }
+
+        .author-card .author-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .author-card .author-role {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .author-card .author-bio {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         /* Слайд 1 - Эволюция процесса */
         .columns {
             display: grid;
@@ -873,14 +933,182 @@
             font-size: 0.8rem;
             color: var(--text-tertiary);
         }
+
+        /* Финальный слайд */
+        .final-slide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .final-left {
+            text-align: left;
+        }
+
+        .final-left h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .final-left h1 span {
+            color: var(--accent-blue);
+        }
+
+        .final-left .contact-info {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .final-left .contact-info .telegram {
+            color: #0088cc;
+            font-weight: 500;
+        }
+
+        /* Twitter карточка */
+        .tweet-card {
+            background: #15202b;
+            border-radius: 16px;
+            padding: 24px;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .tweet-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tweet-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .tweet-author-info .tweet-name {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tweet-verified {
+            color: #1d9bf0;
+            font-size: 1rem;
+        }
+
+        .tweet-author-info .tweet-handle {
+            color: #8b98a5;
+            font-size: 0.9rem;
+        }
+
+        .tweet-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tweet-content {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            position: relative;
+            min-height: 180px;
+        }
+
+        .tweet-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .tweet-text p {
+            margin-bottom: 16px;
+        }
+
+        .tweet-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tweet-text.english {
+            animation: fadeOut 1s ease-in-out 10s forwards;
+        }
+
+        .tweet-text.russian {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 10s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Made with Cursor */
+        .made-with {
+            text-align: center;
+            padding-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.05em;
+        }
+
+        .made-with span {
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
+    <!-- Титульный слайд -->
+    <section class="slide">
+        <div class="slide-container">
+            <div class="title-slide">
+                <h1 class="main-title">По ту сторону <span>ChatGPT</span></h1>
+                <p class="subtitle">Как Cursor и MCP меняют работу продуктовой команды</p>
+
+                <div class="author-card">
+                    <div class="author-name">Буланов Александр</div>
+                    <div class="author-role">Head of Product в ФГ БКС</div>
+                    <div class="author-bio">Развиваю экосистему сайтов. 9 лет опыта в продукте и управлении командами. Product advisor для стартапов и ментор.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Слайд 1: Эволюция процесса -->
     <section class="slide">
         <div class="slide-container">
             <header class="slide-header">
-                <h1>Эволюция процесса.<br><span>От рутины к автономии.</span></h1>
+                <h1>Эволюция процесса.<br><span>От рутины к автономии</span></h1>
             </header>
 
             <div class="columns">
@@ -908,14 +1136,14 @@
                             <span class="item-number">03</span>
                             <div class="item-content">
                                 <h4>Загрузка в ChatGPT</h4>
-                                <p>Копипаст данных без контекста</p>
+                                <p>ИИ не знает контекста</p>
                             </div>
                         </li>
                         <li class="item">
                             <span class="item-number">04</span>
                             <div class="item-content">
                                 <h4>Подбор промпта</h4>
-                                <p>Поиск «магических слов»</p>
+                                <p>Подготовка промта</p>
                             </div>
                         </li>
                         <li class="item">
@@ -949,14 +1177,14 @@
                             <span class="item-number">01</span>
                             <div class="item-content">
                                 <h4>Запрос в Cursor</h4>
-                                <p>ИИ уже видит контекст проекта</p>
+                                <p>ИИ уже знает контекст проекта</p>
                             </div>
                         </li>
                         <li class="item">
                             <span class="item-number">02</span>
                             <div class="item-content">
                                 <h4>Данные через MCP</h4>
-                                <p>Прямое подключение к Amplitude и БД</p>
+                                <p>Прямое подключение к БД или через API</p>
                             </div>
                         </li>
                         <li class="item">
@@ -1007,13 +1235,13 @@
                     </tr>
                     <tr>
                         <td>Основная сложность</td>
-                        <td><span class="highlight">Как правильно попросить</span></td>
+                        <td>Как <span class="highlight">правильно спросить</span></td>
                         <td><span class="highlight">Что именно</span> нужно сделать</td>
                     </tr>
                     <tr>
                         <td>Формат ввода</td>
                         <td><span class="highlight">Длинная простыня текста</span><br>(Mega-prompt)</td>
-                        <td>Короткое намерение<br>(<span class="highlight">Natural Language Command</span>)</td>
+                        <td>Цикл коротких намерений<br>(<span class="highlight">Natural Language Command</span>)</td>
                     </tr>
                 </tbody>
             </table>
@@ -1251,6 +1479,45 @@
             <footer class="slide-footer">
                 <p>Цена одного дня продуктивности — <span class="highlight">меньше чашки кофе</span></p>
             </footer>
+        </div>
+    </section>
+
+    <!-- Финальный слайд -->
+    <section class="slide">
+        <div class="slide-container">
+            <div class="final-slide">
+                <div class="final-left">
+                    <h1>Спасибо за <span>внимание</span></h1>
+                    <p class="contact-info">Буланов Александр<br><span class="telegram">Telegram @alex_bulanov</span></p>
+                </div>
+
+                <div class="tweet-card">
+                    <div class="tweet-header">
+                        <div class="tweet-author">
+                            <div class="tweet-avatar"></div>
+                            <div class="tweet-author-info">
+                                <div class="tweet-name">David K <span class="tweet-verified">✓</span></div>
+                                <div class="tweet-handle">@DavidKPiano</div>
+                            </div>
+                        </div>
+                        <div class="tweet-logo">𝕏.com</div>
+                    </div>
+                    <div class="tweet-content">
+                        <div class="tweet-text english">
+                            <p>Before AI coding agents, I'd constantly have 2 or 3 side-projects that I would struggle to finish</p>
+                            <p>AI completely changed the game</p>
+                            <p>Now I have 15-20 unfinished side-projects</p>
+                        </div>
+                        <div class="tweet-text russian">
+                            <p>До появления ИИ-агентов у меня постоянно было 2-3 сайд-проекта, которые я не мог закончить</p>
+                            <p>ИИ полностью изменил игру</p>
+                            <p>Теперь у меня 15-20 незаконченных сайд-проектов</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="made-with">Made with <span>Cursor AI</span></div>
         </div>
     </section>
 
