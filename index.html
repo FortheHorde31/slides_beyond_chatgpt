@@ -1046,11 +1046,18 @@
         }
 
         .tweet-text.english {
-            animation: fadeOut 1s ease-in-out 10s forwards;
+            opacity: 1;
         }
 
         .tweet-text.russian {
             opacity: 0;
+        }
+
+        .final-slide-visible .tweet-text.english {
+            animation: fadeOut 1s ease-in-out 10s forwards;
+        }
+
+        .final-slide-visible .tweet-text.russian {
             animation: fadeIn 1s ease-in-out 10s forwards;
         }
 
@@ -1619,6 +1626,23 @@
         }, { threshold: 0.5 });
 
         slides.forEach(slide => observer.observe(slide));
+
+        // Отслеживание видимости финального слайда для запуска анимации твита
+        const finalSlide = document.querySelector('.final-slide')?.closest('.slide');
+        if (finalSlide) {
+            const finalSlideObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const slideContainer = entry.target.querySelector('.slide-container');
+                        if (slideContainer) {
+                            slideContainer.classList.add('final-slide-visible');
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            finalSlideObserver.observe(finalSlide);
+        }
     </script>
 </body>
 </html>
