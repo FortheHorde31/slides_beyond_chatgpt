@@ -671,6 +671,42 @@
             position: relative;
         }
 
+        .pipeline-stage.dual-tools {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dual-tools-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .dual-tools-separator {
+            color: var(--text-tertiary);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .dual-tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dual-tool-icon {
+            font-size: 2rem;
+        }
+
+        .dual-tool-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
         .pipeline-stage {
             display: flex;
             flex-direction: column;
@@ -729,6 +765,7 @@
             z-index: 1;
         }
 
+        /* Убираем стрелку после последней карточки */
         .pipeline-stage:last-child::after {
             content: '';
         }
@@ -749,6 +786,7 @@
         .pipeline-stage.intelligence {
             border-top: 3px solid var(--accent-blue);
         }
+
 
         /* Слайд 7 - Горизонтальный чек */
         .pricing-layout {
@@ -804,6 +842,18 @@
         .receipt-item .item-name {
             color: var(--text-primary);
             font-weight: 500;
+        }
+
+        .receipt-item .item-name a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s;
+        }
+
+        .receipt-item .item-name a:hover {
+            border-bottom: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
         }
 
         .receipt-item .item-price {
@@ -1346,13 +1396,22 @@
             </header>
 
             <div class="knowledge-pipeline">
-                <!-- Этап 1: Фиксация -->
-                <div class="pipeline-stage capture">
+                <!-- Этап 1: Shadow.do / Perplexity -->
+                <div class="pipeline-stage capture dual-tools">
                     <div class="stage-number">Этап 1</div>
-                    <div class="stage-icon">🎙️</div>
-                    <div class="stage-name">Shadow.do</div>
-                    <div class="stage-action">Фиксация</div>
-                    <div class="stage-result">Голос → Транскрипт</div>
+                    <div class="dual-tools-row">
+                        <div class="dual-tool-item">
+                            <div class="dual-tool-icon">🎙️</div>
+                            <div class="dual-tool-name">Shadow.do</div>
+                        </div>
+                        <div class="dual-tools-separator">/</div>
+                        <div class="dual-tool-item">
+                            <div class="dual-tool-icon">🔍</div>
+                            <div class="dual-tool-name">Perplexity</div>
+                        </div>
+                    </div>
+                    <div class="stage-action">Фиксация / Исследование</div>
+                    <div class="stage-result">Голос → Транскрипт / Контекст → Доп. информация</div>
                 </div>
 
                 <!-- Этап 2: Структура -->
@@ -1409,32 +1468,27 @@
 
                         <div class="receipt-items">
                             <div class="receipt-item">
-                                <span class="item-name">Voice ink (год)</span>
+                                <span class="item-name"><a href="https://tryvoiceink.com/" target="_blank">Voice ink (год)</a></span>
                                 <span class="item-price">3 120 ₽</span>
                             </div>
 
                             <div class="receipt-item">
-                                <span class="item-name">GPT-4 / Claude</span>
+                                <span class="item-name"><a href="https://openai.com/" target="_blank">GPT-4 / Claude</a></span>
                                 <span class="item-price">1 600 ₽</span>
                             </div>
 
                             <div class="receipt-item">
-                                <span class="item-name">Cursor IDE</span>
+                                <span class="item-name"><a href="http://cursor.com/" target="_blank">Cursor IDE</a></span>
                                 <span class="item-price">1 600 ₽</span>
                             </div>
 
                             <div class="receipt-item">
-                                <span class="item-name">Phygital.Plus</span>
-                                <span class="item-price">1 500 ₽</span>
-                            </div>
-
-                            <div class="receipt-item">
-                                <span class="item-name">Perplexity (год)</span>
+                                <span class="item-name"><a href="https://www.perplexity.ai/" target="_blank">Perplexity (год)</a></span>
                                 <span class="item-price">750 ₽</span>
                             </div>
 
                             <div class="receipt-item free">
-                                <span class="item-name">Shadow.do</span>
+                                <span class="item-name"><a href="https://shadow.do/" target="_blank">Shadow.do</a></span>
                                 <span class="item-price">FREE</span>
                             </div>
                         </div>
@@ -1444,7 +1498,7 @@
                     <div class="receipt-bottom">
                         <div class="receipt-total">
                             <span class="total-label">ИТОГО:</span>
-                            <span class="total-price">~5 000 ₽</span>
+                            <span class="total-price">~3 500 ₽</span>
                         </div>
                     </div>
                 </div>
